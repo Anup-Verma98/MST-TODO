@@ -5,15 +5,28 @@ const UserModel = types
     userId: types.string,
     userName: types.string,
     math: types.number,
-    subjects: types.array,
+    hindi: types.number,
+    // subjects: types.array,
   })
   .actions((self) => ({
     setMath(val) {
-      self.math = pareInt(val);
+      self.math = parseInt(val);
+    },
+    setHindi(val) {
+      self.hindi = parseInt(val);
     },
   }))
   .views((self) => ({
     get totalMarks() {
-      return self.math;
+      return self.math + self.hindi;
     },
   }));
+
+const users = UserModel.create({
+  userId: "abc01",
+  userName: "anup verma",
+  math: 99,
+  hindi: 65,
+});
+
+export default users;
